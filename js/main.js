@@ -62,6 +62,25 @@ $(function()
         }
       } /* End function Ship */
 
+      this.checkSunk = function()
+      {
+        for (var i = 0; i < this.squares,length; i++)
+        {
+            var r = this.squares[i][0];
+            var c = this.squares[i][1];
+            if (this.board[r][c] === "S")
+            {
+                return false;
+            }
+          {
+            this.sunk = true;
+            return
+          }
+        }
+        this.sunk = true;
+        return true;
+      }
+
     function drawBoard(board, player)
     {
         for (var i = 0; i < board.length; i++) {
@@ -71,6 +90,14 @@ $(function()
                 if(board[i][j] == "S" && player === "player")
                 {
                     color = "gray";
+                }
+                else if (board[i][j] == "H")
+                {
+                color = "E60000";
+                }
+                else if (board[i][j] == "W")
+                {
+                color = "FFFFLA";
                 }
                 $("#" + player + " > #" + i + "_" + j).css("background-color", color);
             }
@@ -112,5 +139,13 @@ $(function()
             compShips.push(new Ship("Destroyer", 2, compBoard));
 
             drawBoard(playerBoard, "player");
+
+            // Click Event
+            $("#computer > .gridsquare").click(function())
+            {
+                var id = $(this).attr("id").split("_");
+                var r = parse/int(id[0]);
+                var c = parse/int(id[1]);
+            });
         }
 });
