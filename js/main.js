@@ -3,6 +3,7 @@ $(function() {
     var playerShips = [];
     var compBoard = [];
     var compShips = [];
+    var comp_turn = [];
     var compGuessBoard = [];
     init();
 
@@ -90,7 +91,31 @@ $(function() {
     }
 
 /* Function compTurn for computer turn */
-function compTurn(){
+function compTurn()
+    {
+        var r = 0;
+        var c = 0;
+        do
+            {
+                r = Math.floor(Math.random()* compGuessBoard.length);
+                c = Math.floor(Math.random()* compGuessBoard.length);
+            } while(compGuessBoard[r][c] !== "W")
+        if(playerBoard[r][c] == "S")
+            {
+                playerBoard[r][c] = "H";
+                compGuessBoard[r][c] = "H";
+                $('#ptext').html("Hit");
+                for(var i = 0; i < playerShips.length; i++)
+                    {
+                        if(!playerShips[i].sunk && playerShips[i].checkSunk())
+                            {
+                                $('#ptext').html('Your' + playerShips[i].name + 'was sunk!!');
+                                break;
+                            }
+                    }
+            }else /*  */
+
+    }
 
 
     function init() {
