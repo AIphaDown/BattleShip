@@ -79,7 +79,18 @@ $(function() {
             }
         }
     }
+/* Function to see checkWon */
+    function checkWon(ships){
+        for(var i = 0; i< ships.length; i++){
+            if(!ships[i].sunk){
+                return false;
+            }
+        }
+        return true;
+    }
 
+/* Function compTurn for computer turn */
+function compTurn(){
 
 
     function init() {
@@ -207,6 +218,27 @@ $(function() {
                 var id = $(this).attr("id").split("_");
                 var r = parse/int(id[0]);
                 var c = parse/int(id[1]);
-            });
+                /******#### END 1/22 ####*****/
+        if(compBoard[r][c] === "H" || compBoard[r][c] === "M"){
+                    return;
+                } playerTurn = false;
+                if(compBoard[r][c] === "S"){
+                    compBoard[r][c] = "H";
+                    $('#ctext').html("Hit!");
+                    for(var i =0; i< compShips.length; i++){
+                        if(!compShips[i].sunk && compShips[i].checkSunk()){
+                            $('#ctext').html("You sunk my "+compShips[i].name+"!");
+                            break;
+                        }
+                }
+            }else{
+                compBoard[r][c] = "M";
+                $('#ctext').html("Miss!");
+            }
+            drawBoard(compBoard, "computer");
+            if(checkWon(compShips)){
+                $("#main-text").html("You win!")
+            }
         }
-});
+    });
+}
