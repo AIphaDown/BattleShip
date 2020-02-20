@@ -20,14 +20,12 @@ height:2.5rem;
 width: 20rem;
 height: 20rem;
 display: inline-block;
-border-style: solid;
 }
 
 #computer{
 width: 20rem;
 height: 20rem;
 float: right;
-border-style: solid;
 }
 
 .gridsquare{
@@ -37,4 +35,6 @@ float: left;
 border: .01rem solid black;
 background-color: #1ad1ff;
 }
+
+
 
