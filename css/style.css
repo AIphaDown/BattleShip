@@ -8,12 +8,11 @@ border-style:solid;
 padding-right: 2.5rem;
 }
 
-.textDiv
-{
-width:50%;
-float: left;
-height:2.5rem;
-}
+  .textdiv{
+  width: 50%;
+  height: 2.5rem;
+  float: left;
+  }
 
 #player
 {
